@@ -1,4 +1,6 @@
 # Script to read account list from a csv file and create appropriate users in the portal.
+# Using Star Trek as basis of users. 
+
 import csv
 from arcgis.gis import *
 import argparse
