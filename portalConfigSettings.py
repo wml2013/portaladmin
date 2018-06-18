@@ -1,3 +1,6 @@
+# Portal URL or WebContext
+portalURL = "https://www.startrek.com/argis"
+#
 #
 # Logfile location and name
 #
@@ -11,19 +14,19 @@ continueOnError = False
 # Currently use ESC roles.
 #
 roles = [
-    {"name" : "ESC User",
-     "description" : "ESC User",
+    {"name" : "ST User",
+     "description" : "ST User",
      "privileges" : [
          'portal:user:joinGroup',
          'features:user:edit']
     },
-    {"name" : "ESC Viewer",
-     "description" : "ESC Viewer",
+    {"name" : "ST Viewer",
+     "description" : "ST Viewer",
      "privileges" : [
          'portal:user:joinGroup']
     },
-    {"name" : "ESC Admin",
-     "description" : "ESC Admin",
+    {"name" : "ST Admin",
+     "description" : "ST Admin",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
@@ -43,8 +46,8 @@ roles = [
          'features:user:edit',
          'features:user:fulledit']
     },
-        {"name" : "Skanska Admin",
-     "description" : "Skanska Admin",
+        {"name" : "ST2 Admin",
+     "description" : "ST2 Admin",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
@@ -64,8 +67,8 @@ roles = [
          'features:user:edit',
          'features:user:fulledit']
     },
-    {"name" : "ESC Publisher3",
-     "description" : "ESC Publisher3",
+    {"name" : "ST Publisher3",
+     "description" : "ST Publisher3",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
@@ -92,8 +95,8 @@ disableLivingAtlas = True
 # General portal properties
 # Update name and description as required
 generalProperties = {
-    "name" : "Common engineering test Portal 5th June v64",
-    "description" : "Common engineering test Portal 5th June v64",
+    "name" : "Star Trek Test portal",
+    "description" : "Star Trek Test portal",
     "access" : "private",
     "allSSL" : True
 }
@@ -104,9 +107,9 @@ generalProperties = {
 #
 securityConfig = {
     "defaultLevelForUser" : 1,
-    "defaultRoleForUser" : "ESC Viewer",
+    "defaultRoleForUser" : "ST Viewer",
     "enableAutomaticAccountCreation" : False,
-    "allowedProxyHosts" : None, # "portal-jobs.os.uk,portal-imagery.os.uk,portal-support.os.uk",
+    "allowedProxyHosts" : None, # "www.startrek.com",
     "disableServicesDirectory" : False
 }
 #
@@ -116,7 +119,7 @@ securityConfig = {
 # can specify portalUrl as the value, otherwise specify the Url as a string.
 #
 systemProperties = {
-    "WebContextURL" : "https://skanska.azure.esriuk.com/arcgis",
+    "WebContextURL" : portalURL,
     "disableSignup" : True
 }
 #
