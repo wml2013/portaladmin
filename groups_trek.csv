@@ -1,0 +1,4 @@
+access,description,isFav,isInvitationOnly,isViewOnly,phone,snippet,sortField,sortOrder,tags,thumbnail,title
+org,ESC Admin. ,FALSE,FALSE,FALSE,null,ESC Admin.   ,title,asc,"ESC Admin",Icons/CentralServices.png,ESC Admin
+org,ESC User.  ,FALSE,FALSE,FALSE,null,ESC USer.    ,title,asc,"ESC User",Icons/CustomerService.png,ESC User
+org,The Carousel.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"carousel",Icons/Churn.png,The Carousel
