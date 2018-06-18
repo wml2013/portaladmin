@@ -5,8 +5,8 @@ A bunch of python scripts that I use to help me automate ArcGIS Enterprise Admin
 Have used this as part of a complete hands off deployment using Azure RM. 
 
 
-Files: 
+## Files: 
 
-create_st-users.py
+**create_st-users.py**
 
 Requires the presence of users_trek.csv to be in the same folder as the Python file. 
