@@ -1,5 +1,7 @@
-# Date:             31/05/2018
-# Description:      Changed locallogger so that it passes messages to console only.
+# Date:			31/05/2018
+# Description:		Changed locallogger so that it passes messages to console only.Requires the LocalLogger Utils. 
+#		    	LocalLogger is an Esri bit of code. Check out PortalAdmin_nolocallog.py for a version that writes to a local file.
+
 
 import os, sys
 import json
