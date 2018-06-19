@@ -1,7 +1,7 @@
 
 # Reads in portalConfigSettings.py to automate creation of roles, groups, users and settings. 
 #
-# To run: python portaladmin.py --config portalconfigsettings.py --url "https://test0205.local.net/arcgis" -u "siteadmin" -p "Jkkjjxx"
+# To run: python portaladmin.py --config portalconfigsettings.py --url "https://skanska.azure.esriuk.com/arcgis" -u "siteadmin" -p "Jkkjjxx"
 #
 #
 # Note: this is for Ming's own testing as it creates users from the Star Trek Universe. 
@@ -173,7 +173,7 @@ def installSSLCertificate(gisInfo):
     """
     Registering the certificate to be used by the Portal.
     """
-    
+
     localLogger.write("Working on SSL Certificate")
     localLogger.incIndent()
 
