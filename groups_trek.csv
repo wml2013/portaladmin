@@ -1,5 +1,7 @@
 access,description,isFav,isInvitationOnly,isViewOnly,phone,snippet,sortField,sortOrder,tags,thumbnail,title
-org,ST Admin. ,FALSE,FALSE,FALSE,null,ESC Admin.   ,title,asc,"ESC Admin",Icons/CentralServices.png,ST Admin
-org,ST User.  ,FALSE,FALSE,FALSE,null,ESC USer.    ,title,asc,"ESC User",Icons/CustomerService.png,ST User
+org,ST Admin. ,FALSE,FALSE,FALSE,null,ESC Admin.   ,title,asc,"ESC Admin",Icons/startrek_command.png,ST Admin
+org,ST User.  ,FALSE,FALSE,FALSE,null,ESC USer.    ,title,asc,"ESC User",Icons/startrek.png,ST User
 org,The Carousel.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"carousel",Icons/Churn.png,The Carousel
-org,Away Team.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"carousel",Icons/Churn.png,Away Team
+org,Away Team.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"away team",Icons/startrek.png,Away Team
+org,Crew.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"crew",Icons/startrek.png,Crew
+org,Engineering.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"engineering",Icons/startrek_engineerinng.png,Engineering
