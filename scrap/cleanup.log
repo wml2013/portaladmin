@@ -1,0 +1,220 @@
+
+=====================================================================
+RUNNING CLEANUP
+
+=====================================================================
+RUNNING CLEANUP
+Deleting groups
+---------------
+
+Deleting ESC Admin  ##  success
+Deleting ESC User  ##  success
+Deleting Gallery  ##  Error deleting : Unable to delete group. Delete protection is turned on.
+(Error Code: 400)
+Deleting The Carousel  ##  success
+
+Deleting user content
+---------------------
+
+User : COWI_User # empty
+User : COWI_Viewer # empty
+User : CYIE_User # empty
+User : CYIE_Viewer # empty
+User : esri_boundaries # skipped
+User : esri_demographics # skipped
+User : esri_livingatlas # skipped
+User : esri_nav # skipped
+User : IICT_User # empty
+User : IICT_Viewer # empty
+User : LMRK_User # empty
+User : LMRK_Viewer # empty
+User : OS_User # empty
+User : OS_Viewer # empty
+User : PUBLISHER_ChangeMarker # empty
+User : PUBLISHER_COWI # empty
+User : PUBLISHER_CYIE # empty
+User : PUBLISHER_IICT # empty
+User : PUBLISHER_Imagery # empty
+User : PUBLISHER_JobReplica # empty
+User : PUBLISHER_LMRK # empty
+User : PUBLISHER_MAIA # empty
+User : PUBLISHER_NominatedArea # empty
+User : PUBLISHER_OS # empty
+User : PUBLISHER_WorkAreas # empty
+User : siteadmin # 
+Deleting : qfaults # content_del_ex
+
+Deleting users
+--------------
+
+Deleting COWI_User  ##  success
+Deleting COWI_Viewer  ##  success
+Deleting CYIE_User  ##  success
+Deleting CYIE_Viewer  ##  success
+Deleting IICT_User  ##  success
+Deleting IICT_Viewer  ##  success
+Deleting LMRK_User  ##  success
+Deleting LMRK_Viewer  ##  success
+Deleting OS_User  ##  success
+Deleting OS_Viewer  ##  success
+Deleting PUBLISHER_ChangeMarker  ##  success
+Deleting PUBLISHER_COWI  ##  success
+Deleting PUBLISHER_CYIE  ##  success
+Deleting PUBLISHER_IICT  ##  success
+Deleting PUBLISHER_Imagery  ##  success
+Deleting PUBLISHER_JobReplica  ##  success
+Deleting PUBLISHER_LMRK  ##  success
+Deleting PUBLISHER_MAIA  ##  success
+Deleting PUBLISHER_NominatedArea  ##  success
+Deleting PUBLISHER_OS  ##  success
+Deleting PUBLISHER_WorkAreas  ##  success
+ All clean
+
+Deleting roles
+--------------
+
+Deleting ESC Publisher  ##  success
+Deleting ESC Admin  ##  success
+Deleting Skanska Admin  ##  success
+Deleting ESC Publisher3  ##  success
+Deleting ESC User  ##  success
+Deleting ESC Viewer  ##  success
+ All clean
+=====================================================================
+RUNNING CLEANUP
+Deleting groups
+---------------
+
+Deleting Gallery  ##  Error deleting : Unable to delete group. Delete protection is turned on.
+(Error Code: 400)
+
+Deleting user content
+---------------------
+
+User : esri_boundaries # skipped
+User : esri_demographics # skipped
+User : esri_livingatlas # skipped
+User : esri_nav # skipped
+User : siteadmin # 
+Deleting : qfaults # content_del_ex
+
+Deleting users
+--------------
+
+ All clean
+
+Deleting roles
+--------------
+
+Deleting ST User  ##  success
+Deleting ST Viewer  ##  success
+Deleting ST Admin  ##  success
+Deleting ST2 Admin  ##  success
+Deleting ST Publisher3  ##  success
+ All clean
+=====================================================================
+RUNNING CLEANUP
+Deleting groups
+---------------
+
+Deleting Gallery  ##  Error deleting : Unable to delete group. Delete protection is turned on.
+(Error Code: 400)
+
+Deleting user content
+---------------------
+
+User : esri_boundaries # skipped
+User : esri_demographics # skipped
+User : esri_livingatlas # skipped
+User : esri_nav # skipped
+User : siteadmin # 
+Deleting : qfaults # content_del_ex
+
+Deleting users
+--------------
+
+ All clean
+
+Deleting roles
+--------------
+
+Deleting ST User  ##  success
+Deleting ST Viewer  ##  success
+Deleting ST Admin  ##  success
+Deleting ST2 Admin  ##  success
+Deleting ST Publisher3  ##  success
+ All clean
+=====================================================================
+RUNNING CLEANUP
+Deleting groups
+---------------
+
+Deleting Gallery  ##  Error deleting : Unable to delete group. Delete protection is turned on.
+(Error Code: 400)
+Deleting ST Admin  ##  success
+Deleting ST User  ##  success
+Deleting The Carousel  ##  success
+
+Deleting user content
+---------------------
+
+User : esri_boundaries # skipped
+User : esri_demographics # skipped
+User : esri_livingatlas # skipped
+User : esri_nav # skipped
+User : janeway # empty
+User : kirk # empty
+User : siteadmin # 
+Deleting : qfaults # content_del_ex
+
+Deleting users
+--------------
+
+Deleting janeway  ##  success
+ All clean
+
+Deleting roles
+--------------
+
+Deleting ST User  ##  success
+Deleting ST Viewer  ##  success
+Deleting ST Admin  ##  success
+Deleting ST2 Admin  ##  success
+Deleting ST Publisher3  ##  success
+ All clean
+=====================================================================
+RUNNING CLEANUP
+Deleting groups
+---------------
+
+Deleting Gallery  ##  Error deleting : Unable to delete group. Delete protection is turned on.
+(Error Code: 400)
+Deleting ST Admin  ##  success
+Deleting ST User  ##  success
+Deleting The Carousel  ##  success
+
+Deleting user content
+---------------------
+
+User : esri_boundaries # skipped
+User : esri_demographics # skipped
+User : esri_livingatlas # skipped
+User : esri_nav # skipped
+User : kirk # empty
+User : siteadmin # 
+Deleting : qfaults # content_del_ex
+
+Deleting users
+--------------
+
+ All clean
+
+Deleting roles
+--------------
+
+Deleting ST User  ##  success
+Deleting ST Viewer  ##  success
+Deleting ST Admin  ##  success
+Deleting ST2 Admin  ##  success
+Deleting ST Publisher3  ##  success
+ All clean

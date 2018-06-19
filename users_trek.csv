@@ -1,6 +1,6 @@
-Firstname,Lastname,email,username,password,role,level,groups
-William,Shatner,william.shatner@company.com,kirk,kirk@123,"ESC Admin",2,"ESC Admin"
-Patrick,Stewart,patrick.stewart@company.com,picard,picard@123,"ESC Admin",2,"ESC Admin"
-Scott,Bakula,Scott.Bakula@company.com,archer,archer@123,"ESC User",2,"ESC User"
-Jane,Mulgrew,Jane.Mulgrew@company.com,janeway,janeway@123,"ESC User",2,"ESC User"
+Firstname,Lastname,email,username,password,role,level,groups,assigned_state
+William,Shatner,william.shatner@company.com,kirk,kirk@123,"ESC Admin",2,"ST Admin",KS
+Patrick,Stewart,patrick.stewart@company.com,picard,picard@123,"ESC Admin",2,"ST Admin",INV
+Scott,Bakula,Scott.Bakula@company.com,archer,archer@123,"ESC User",2,"ST User",IL
+Jane,Mulgrew,Jane.Mulgrew@company.com,janeway,janeway@123,"ESC User",2,"ST User",UT
 

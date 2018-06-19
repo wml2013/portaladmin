@@ -90,6 +90,6 @@ try:
 
     log_file.write("\n All clean")
 
-    print("0")
+    print("0 - Success, everything deleted that can be deleted.")
 except:
-    print("1")
+    print("1 - Failed in deeleting.")

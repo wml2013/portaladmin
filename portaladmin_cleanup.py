@@ -8,7 +8,7 @@ try:
     parser.add_argument('url', help='Portal url of the form: https://portalname.domain.com/webadaptor')
     parser.add_argument('-u','--user', help='Administrator username', default='siteadmin')
     parser.add_argument('-p','--password', help='Administrator password', default='x]984<ngb3!')
-    parser.add_argument('-l', '--log', help='Path to log file', default='cleanup.log')
+    parser.add_argument('-l', '--log', help='Path to log file', default='portaladmin_cleanup.log')
 
     args = parser.parse_args()
     #endregion
@@ -20,7 +20,7 @@ try:
     log_file.write("=====================================================================\n")
     log_file.write("RUNNING CLEANUP\n")
 
-    gis = GIS(args.url, args.user, args.password)
+    gis = GIS(args.url, args.user, args.password,verify_cert=False)
 
     # region remove groups
     group_list = gis.groups.search("owner:" + args.user)
@@ -64,7 +64,7 @@ try:
     log_file.write("--------------\n")
 
     for user in user_list:
-        if user.username == "admin" or user.username.startswith("esri_") or user.username == "siteadmin" or user.username.startswith("kirk"):
+        if user.username == "admin" or user.username.startswith("esri_") or user.username == "siteadmin" or user.username.startswith("ming"):
             continue
         else:
             log_file.write("\nDeleting " + user.username + "  ##  ")
@@ -90,6 +90,6 @@ try:
 
     log_file.write("\n All clean")
 
-    print("0")
+    print("0 - Success, everything deleted that can be deleted.")
 except:
-    print("1")
+    print("1 - Failed in deleting.")

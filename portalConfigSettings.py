@@ -1,5 +1,5 @@
 # Portal URL or WebContext
-portalURL = "https://www.startrek.com/argis"
+portalURL = "https://skanska.azure.esriuk.com/arcgis"
 #
 #
 # Logfile location and name
@@ -8,28 +8,29 @@ logfile = ".\\Logs\\portal_config.log"
 #
 # Whether to continue if an error occurs, or stop processing
 #
-continueOnError = False
+continueOnError = True
 #
 # List of roles to be created.
 # Currently use ESC roles.
 #
 roles = [
     {"name" : "ST User",
-     "description" : "ST User",
+     "description" : "Star Trek User",
      "privileges" : [
          'portal:user:joinGroup',
          'features:user:edit']
     },
     {"name" : "ST Viewer",
-     "description" : "ST Viewer",
+     "description" : "Star Trek Viewer",
      "privileges" : [
          'portal:user:joinGroup']
     },
     {"name" : "ST Admin",
-     "description" : "ST Admin",
+     "description" : "Star Trek Admin",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
+         'portal:user:joinGroup',
          'portal:admin:viewGroups',
          'portal:admin:deleteGroups',
          'portal:admin:updateGroups',
@@ -46,12 +47,13 @@ roles = [
          'features:user:edit',
          'features:user:fulledit']
     },
-        {"name" : "ST2 Admin",
-     "description" : "ST2 Admin",
+        {"name" : "ST Engineer",
+     "description" : "Star Trek Engineer",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
          'portal:admin:viewGroups',
+         'portal:user:joinGroup',
          'portal:admin:deleteGroups',
          'portal:admin:updateGroups',
          'portal:admin:reassignGroups',
@@ -67,11 +69,12 @@ roles = [
          'features:user:edit',
          'features:user:fulledit']
     },
-    {"name" : "ST Publisher3",
-     "description" : "ST Publisher3",
+    {"name" : "ST Publisher",
+     "description" : "Star Trek Publisher",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
+         'portal:user:joinGroup',
          'portal:admin:viewGroups',
          'portal:admin:deleteGroups',
          'portal:admin:updateGroups',
@@ -95,8 +98,8 @@ disableLivingAtlas = True
 # General portal properties
 # Update name and description as required
 generalProperties = {
-    "name" : "Star Trek Test portal",
-    "description" : "Star Trek Test portal",
+    "name" : "Star Trek Test portal June 18 v3",
+    "description" : "Star Trek Test portal June 18 v3",
     "access" : "private",
     "allSSL" : True
 }
@@ -119,7 +122,7 @@ securityConfig = {
 # can specify portalUrl as the value, otherwise specify the Url as a string.
 #
 systemProperties = {
-    "WebContextURL" : portalURL,
+    "WebContextURL" : "https://skanska.azure.esriuk.com/arcgis",
     "disableSignup" : True
 }
 #

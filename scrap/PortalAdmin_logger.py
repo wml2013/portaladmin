@@ -1,149 +1,12 @@
-
-# Reads in portalConfigSettings.py to automate creation of roles, groups, users and settings. 
-#
-# To run: python portaladmin.py --config portalconfigsettings.py --url "https://test0205.local.net/arcgis" -u "siteadmin" -p "Jkkjjxx"
-#
-
 import os, sys
 import json
 import importlib.util
 from arcgis.gis import GIS
 import argparse
 import csv
-import time
 
 from utils import localLogger
 from utils.exceptions import *
-
-class GISInfo(object):
-    def __init__(self, url, username, password):
-        self.username = username
-        self.password = password
-        self.url = url
-        self._gis = None
-        self._allUsers = None
-        self._allGroups = None
-        self._allRoles = None
-
-    def ResetGIS(self):
-        self._gis = None
-        self._allUsers = None
-        self._allGroups = None
-        self._allRoles = None
-
-    @property
-    def gis(self):
-        if self._gis == None:
-            self._gis = GIS(self.url, self.username, self.password, verify_cert=False)
-        return self._gis
-
-    @property
-    def allUsers(self):
-        if self._allUsers == None:
-            with localLogger.DisableAPILogging():
-                self._allUsers = self.gis.users.search(max_users = 1000)
-        return self._allUsers
-
-    @property
-    def allGroups(self):
-        if self._allGroups == None:
-            with localLogger.DisableAPILogging():
-                self._allGroups = self.gis.groups.search()
-        return self._allGroups
-
-    @property
-    def allRoles(self):
-        if self._allRoles == None:
-            with localLogger.DisableAPILogging():
-                self._allRoles = self.gis.users.roles.all()
-        return self._allRoles
-
-    def waitForGroup(self, groupName):
-        first = True
-        for i in range(1,10):
-            try:
-                self._allGroups = None
-                for grp in self.allGroups:
-                    if grp["title"] == groupName:
-                        return grp
-            except:
-                self.ResetGIS()
-
-            if first:
-                first = False
-                localLogger.write("  waiting for group \"{}\" to be created".format(groupName))
-            time.sleep(5)
-        localLogger.write("  created group \"{}\" not found".format(groupName))
-        return None
-
-    def createUser(self, userDict):
-        for i in range(1, 10):
-            try:
-                for usr in self.allUsers:
-                    if usr["username"].lower() == userDict["username"].lower():
-                        return usr
-
-                newUser = self.gis.users.create(username=userDict['username'],
-                                                      password=userDict['password'],
-                                                      firstname=userDict['Firstname'],
-                                                      lastname=userDict['Lastname'],
-                                                      email=userDict['email'],
-                                                      role='org_user')
-                if newUser != None:
-                    return waitForUser(self, newUser["username"])
-                else:
-                    return None
-            except:
-                self.ResetGIS()
-        #
-        # Try 1 more time as we are getting repeated exceptions
-        #
-        newUser = self.gis.users.create(username=userDict['username'],
-                                            password=userDict['password'],
-                                            firstname=userDict['Firstname'],
-                                            lastname=userDict['Lastname'],
-                                            email=userDict['email'],
-                                            role='org_user')
-        if newUser != None:
-            return waitForUser(self, newUser["username"])
-        else:
-            return None
-        
-    def waitForUser(self, username):
-        first = True
-        for i in range(1,10):
-            try:
-                self._allUsers = None
-                for usr in self.allUsers:
-                    if usr["username"] == username:
-                        return usr
-            except:
-                self.ResetGIS()
-
-            if first:
-                first = False
-                localLogger.write("  waiting for user \"{}\" to be created".format(username))
-            time.sleep(5)
-        localLogger.write("  created user \"{}\" not found".format(username))
-        return None
-
-    def waitForRole(self, rolename):
-        first = True
-        for i in range(1,10):
-            try:
-                self._allRoles = None
-                for role in self.allRoles:
-                    if role.name == rolename:
-                        return role
-            except:
-                self.ResetGIS()
-
-            if first:
-                first = False
-                localLogger.write("  waiting for role \"{}\" to be created".format(rolename))
-            time.sleep(5)
-        localLogger.write("  created role \"{}\" not found".format(rolename))
-        return None
 
 def _getCertificateAliasName(cert, raiseEx = True):
     if "Alias name" in cert.properties:
@@ -155,19 +18,20 @@ def _getCertificateAliasName(cert, raiseEx = True):
     else:
         return None
 
-def _checkIfCertificateExists(gisInfo, certName):
+def _checkIfCertificateExists(gis, certName):
     """
     Checks whether the certificate has been registered in the portal and, if so,
     returns the certificate.
     """
     localLogger.write("Checking registered SSL Certificate")
-    for cert in gisInfo.gis.admin.security.ssl.list():
+    localLogger.incIndent()
+    for cert in gis.admin.security.ssl.list():
         compName = _getCertificateAliasName(cert)
         if compName.lower() == certName.lower():
             return cert
     return None
 
-def installSSLCertificate(gisInfo):
+def installSSLCertificate(gis):
     """
     Registering the certificate to be used by the Portal.
     """
@@ -177,34 +41,34 @@ def installSSLCertificate(gisInfo):
 
     try:
         certificateAlias = portal_config.sslCertificates["alias"].lower()
-        certToInstall = _checkIfCertificateExists(gisInfo, certificateAlias)
+        certToInstall = _checkIfCertificateExists(gis,certificateAlias)
         localLogger.write("Checking if SSL Certificate exists")
         if certToInstall == None:
             localLogger.write("ERROR: Certificate with alias \"{}\" has not been registered".format(certificateAlias))
             return False
 
-        installedCertificateAlias = gisInfo.gis.admin.security.ssl.properties["webServerCertificateAlias"]
+        installedCertificateAlias = gis.admin.security.ssl.properties["webServerCertificateAlias"]
         certToInstallAlias = _getCertificateAliasName(certToInstall)
 
         # Makes changes to existing Protocols and Ciphers regardless of installed certificate
         ssl_protocols = ",".join(portal_config.sslCertificates["ssl_protocols"])
         ssl_ciphers = ", ".join(portal_config.sslCertificates["cipher_suites"])
         localLogger.write("Editing existing SSL Protocols & Cipher Suites")
-        gisInfo.gis.admin.security.ssl.update(certToInstallAlias,ssl_protocols, ssl_ciphers)
+        gis.admin.security.ssl.update(certToInstallAlias,ssl_protocols, ssl_ciphers)
 
         if certToInstallAlias != installedCertificateAlias:
             #
             # Install the new certificate
             #
             localLogger.write("Registering certificate with alias \"{}\" as the portal certificate".format(certToInstallAlias))
-            #portal_config.gis.admin.security.ssl.update(certToInstallAlias, portal_config.sslCertificates["ssl_protocols"],portal_config.sslCertificates["cipher_suites"])
+            #gis.admin.security.ssl.update(certToInstallAlias, portal_config.sslCertificates["ssl_protocols"],portal_config.sslCertificates["cipher_suites"])
             #
             # Now make the changes to existing Protocols and Ciphers
             #
             ssl_protocols = ",".join(portal_config.sslCertificates["ssl_protocols"])
             ssl_ciphers = ", ".join(portal_config.sslCertificates["cipher_suites"])
             localLogger.write("Editing SSL Protocols & Cipher Suites due to new certificate")
-            gisInfo.gis.admin.security.ssl.update(certToInstallAlias, ssl_protocols, ssl_ciphers)
+            gis.admin.security.ssl.update(certToInstallAlias,ssl_protocols, ssl_ciphers)
         else:
             localLogger.write("Certificate with alias \"{}\" is already installed as the portal certificate".format(certToInstallAlias))
         return True
@@ -215,13 +79,13 @@ def installSSLCertificate(gisInfo):
     finally:
         localLogger.decIndent()
 
-def _findRole(gisInfo, roleName):
-    for role in gisInfo.allRoles:
+def _findRole(gis, roleName):
+    for role in gis.users.roles.all():
         if role.name.lower() == roleName.lower():
             return role
     return None
 
-def configureRoles(gisInfo):
+def configureRoles(gis):
     localLogger.write("Creating roles")
     localLogger.incIndent()
 
@@ -229,22 +93,21 @@ def configureRoles(gisInfo):
     try:
         for configRole in portal_config.roles:
             with localLogger.DisableAPILogging():
-                existingRole = _findRole(gisInfo, configRole["name"])
+                roleExists = gis.users.roles.exists(configRole["name"])
 
-            if existingRole == None:
+            if not roleExists:
                 localLogger.write("Creating role: " + configRole["name"])
                 with localLogger.DisableAPILogging():
-                    result = gisInfo.gis.users.roles.create(name = configRole["name"],
+                    result = gis.users.roles.create(name = configRole["name"],
                                                     description = configRole["description"],
                                                     privileges = configRole["privileges"])
                 if result == None:
                     localLogger.write("Failed to create role")
                     results.append(False)
                 else:
-                    gisInfo.waitForRole(result.name)
                     results.append(True)
             else:
-                localLogger.write("Role already exists: " + existingRole.name)
+                localLogger.write("Role already exists: " + configRole["name"])
                 results.append(True)
         return all(results)
     except Exception as ex:
@@ -253,30 +116,32 @@ def configureRoles(gisInfo):
     finally:
         localLogger.decIndent()
 
-def createGroups(gisInfo):
+def createGroups(gis):
     """Create groups using a CSV file called groups.csv"""
     localLogger.write("Creating groups")
     localLogger.incIndent()
     results = []
 
     try:
-        with open("groups_trek.csv", 'r') as groups_csv:
+        with localLogger.DisableAPILogging():
+            existingGroups = gis.groups.search("owner:{}".format(gis.properties["user"]["username"]))
+
+        with open("groups.csv", 'r') as groups_csv:
             groups = csv.DictReader(groups_csv)
             for group in groups:
                 try:
                     foundGroup = None
-                    for extgrp in gisInfo.allGroups:
+                    for extgrp in existingGroups:
                         if extgrp["title"].lower() == group["title"].lower():
                             foundGroup = extgrp
 
                     if foundGroup == None:
                         localLogger.write("Creating group: " + group['title'])
-                        newGroup = gisInfo.gis.groups.create_from_dict(group)
+                        newGroup = gis.groups.create_from_dict(group)
                         if newGroup == None:
-                            localLogger.write("  Failed to create group {}".format(group["title"]))
+                            localLogger.write("  Could not create group {}".format(group["title"]))
                             results.append(False)
                         else:
-                            gisInfo.waitForGroup(newGroup["title"])
                             results.append(True)
                     else:
                         localLogger.write("Group \"{}\" already exists".format(foundGroup["title"]))
@@ -294,85 +159,79 @@ def createGroups(gisInfo):
     finally:
         localLogger.decIndent()
 
-def createUsers(gisInfo):
-    """Create users using a CSV file called users_trek.csv"""
+def createUsers(gis):
+    """Create users using a CSV file called users.csv"""
     localLogger.write("Creating users")
     localLogger.incIndent()
     results = []
 
     try:
-        with open("users_trek.csv", 'r') as users_csv:
+        allRoles = gis.users.roles.all()
+        # We assume there will be less than 1000 users!
+        existingUsers = gis.users.search(max_users=1000)
+        with open("users.csv", 'r') as users_csv:
             users = csv.DictReader(users_csv)
 
             for user in users:
                 foundUser = None
-                for extusr in gisInfo.allUsers:
+                for extusr in existingUsers:
                     if extusr["username"].lower() == user["username"].lower():
                         foundUser = extusr
-
                 if foundUser == None:
-                    localLogger.write("Creating user " + user['username'] + ", role " + user['role'])
+                    localLogger.write("Creating user: " + user['username'] + " " + user['role'])
                     try:
-                        foundUser = gisInfo.createUser(user)
+                        foundUser = gis.users.create(username=user['username'],
+                                                     password=user['password'],
+                                                     firstname=user['Firstname'],
+                                                     lastname=user['Lastname'],
+                                                     email=user['email'],
+                                                     role='org_user')
+                                                     #role =user['role']) need to assign to a generic role
                         if foundUser == None:
                             localLogger.write("Failed to create user {}".format(user["username"]))
                             results.append(False)
-                        else:
-                            foundUser = gisInfo.waitForUser(foundUser["username"])
-                            results.append(True)
                     except Exception as ex:
                         localLogger.write(FormatExceptions("Failed to create user {}".format(user["username"]), ex))
                 else:
-                    localLogger.write("User \"{}\" already exists".format(foundUser["username"]))
+                    localLogger.write("User \"{}\" already exists".format())
                 #
                 # The following will update the role of an existing user as well as a new user
                 #
-                if foundUser != None:
+                if foundUser:
                     # Assign custom role to user
                     localLogger.write("  Assigning role: " + user['role'])
-                    foundRole = _findRole(gisInfo, user['role'])
+                    foundRole = None
+                    for r in allRoles:
+                        if r.name.lower() == user['role'].lower():
+                            foundRole = r
                     if foundRole == None:
                         localLogger.write("    Undefined role: {}".format(user["role"]))
                     else:
                         try:
-                            foundUser.update_role(foundRole)
+                            foundUser.update_role(r)
                             results.append(True)
                         except Exception as role_ex:
-                            localLogger.write(FormatExceptions("Failed to assign role \"{}\" to user".format(foundRole.name), role_ex))
+                            localLogger.write(FormatExceptions("Failed to assign role \"{}\" to user".format(r.name), role_ex))
                             results.append(False)
 
                     # Now assign user to group(s)
                     localLogger.write("  Adding to groups:")
                     groups = user['groups']
-                    group_list = [g for g in [grp.strip() for grp in groups.split(",")] if len(g) > 0]
+                    group_list = [grp.strip() for grp in groups.split(",")]
 
                     # Search for the group
                     for g in group_list:
-                        foundGroup = None
-                        for grp in gisInfo.allGroups:
-                            if grp["title"] == g:
-                                foundGroup = grp
-
-                        if foundGroup != None:
-                            group_members = foundGroup.get_members()
-                            if foundUser["username"] in group_members["users"]:
-                                localLogger.write("    already a member of group \"{}\"".format(foundGroup["title"]))
-                                results.append(True)
-                            else:
-                                try:
-                                    groups_result = foundGroup.add_users([foundUser["username"]])
-                                    if len(groups_result['notAdded']) == 0:
-                                        localLogger.write("    added to group \"{}\"".format(foundGroup["title"]))
-                                        results.append(True)
-                                    else:
-                                        localLogger.write("    not added to group \"{}\"\n      result: {}".format(foundGroup["title"], groups_result))
-                                        results.append(False)
-                                except Exception as groups_ex:
-                                    localLogger.write(FormatExceptions("Failed add user to group {}".format(foundGroup["title"]), groups_ex))
-                                    results.append(False)
-                        else:
-                            localLogger.write("    Group \"{}\" not found".format(g))
-                            results.append(False)
+                        group_search = gis.groups.search(g)
+                        if len(group_search) > 0:
+                            try:
+                                group = group_search[0]
+                                groups_result = group.add_users([user['username']])
+                                if len(groups_result['notAdded']) == 0:
+                                    localLogger.write(g)
+                                    results.append(True)
+                            except Exception as groups_ex:
+                                localLogger.write(FormatExceptions("Failed add user to group {}".format(g), groups_ex))
+                                results.append(False)
         return all(results)
     except Exception as ex:
         localLogger.write(FormatExceptions("ERROR: Unexpected exception thrown", ex))
@@ -380,19 +239,20 @@ def createUsers(gisInfo):
     finally:
         localLogger.decIndent()
 
-#def disableLivingAtlas(gisInfo):
+#def disableLivingAtlas(gis):
 #    localLogger.write("Disabling Living Atlas")
 #    localLogger.incIndent()
 
 #    try:
 #        with localLogger.DisableAPILogging():
-#            livingAtlas = gisInfo.gis.admin.living_atlas
+#            livingAtlas = gis.admin.living_atlas
+#            groups = gis.groups.search("owner:esri_livingatlas")
         #
         # Extract the groups we want
         #
 #        livingAtlasGroup = None
 #        livingAtlasContentGroup = None
-#        for grp in gisInfo.allGroups:
+#        for grp in groups:
 #            if grp["title"].lower() == "living atlas" and grp["owner"] == "esri_livingatlas":
 #                livingAtlasGroup = grp
 #            elif grp["title"].lower() == "living atlas analysis layers" and grp["owner"] == "esri_livingatlas":
@@ -424,7 +284,7 @@ def createUsers(gisInfo):
 #    finally:
 #        localLogger.decIndent()
 
-def configureSecurity(gisInfo):
+def configureSecurity(gis):
     localLogger.write("Configuration security options")
     localLogger.incIndent()
 
@@ -433,7 +293,7 @@ def configureSecurity(gisInfo):
             localLogger.write("No security configuration to apply")
             return True
 
-        updConfig = json.loads(json.dumps(gisInfo.gis.admin.security.config))
+        updConfig = json.loads(json.dumps(gis.admin.security.config))
         #
         # Remove items we are not expecting
         #
@@ -441,7 +301,7 @@ def configureSecurity(gisInfo):
             if k in updConfig:
                 del updConfig[k]
 
-        localLogger.write("Current default role: " + updConfig["defaultRoleForUser"])
+        print("Current role: " + updConfig["defaultRoleForUser"])
         #
         # Add in our changes
         #
@@ -455,16 +315,16 @@ def configureSecurity(gisInfo):
             portal_config.securityConfig["defaultRoleForUser"] not in ["account_user", "account_publisher"]:
 
             roleName = portal_config.securityConfig["defaultRoleForUser"]
-            existingRole = _findRole(gisInfo, roleName)
+            with localLogger.DisableAPILogging():
+                existingRole = _findRole(gis, roleName)
             if existingRole == None:
                 localLogger.write("ERROR: Role defined for defaultRoleForUser property does not exist: " + roleName)
-                localLogger.write("The security configuration has NOT been updated")
                 return False
             updConfig["defaultRoleForUser"] = existingRole.role_id
         #
         # Update the configuration
         #
-        gisInfo.gis.admin.security.config = updConfig
+        gis.admin.security.config = updConfig
         return True
     except Exception as ex:
         localLogger.write(FormatExceptions("ERROR: Unexpected exception thrown", ex))
@@ -472,7 +332,7 @@ def configureSecurity(gisInfo):
     finally:
         localLogger.decIndent()
 
-def configureGeneralProperties(gisInfo):
+def configureGeneralProperties(gis):
     localLogger.write("Configuring general properties")
     localLogger.incIndent()
 
@@ -482,7 +342,7 @@ def configureGeneralProperties(gisInfo):
             return True
 
         updProperties = portal_config.generalProperties
-        result = gisInfo.gis.update_properties(updProperties)
+        result = gis.update_properties(updProperties)
         return result
     except Exception as ex:
         localLogger.write(FormatExceptions("ERROR: Unexpected exception thrown", ex))
@@ -490,7 +350,7 @@ def configureGeneralProperties(gisInfo):
     finally:
         localLogger.decIndent()
 
-def configureSystemProperties(gisInfo):
+def configureSystemProperties(gis):
     localLogger.write("Configuring system properties")
     localLogger.incIndent()
 
@@ -499,7 +359,7 @@ def configureSystemProperties(gisInfo):
             localLogger.write("No system properties to apply")
             return True
 
-        system = gisInfo.gis.admin.system
+        system = gis.admin.system
         curProperties = system.properties
         updProperties = json.loads(json.dumps(curProperties))
         for k in portal_config.systemProperties:
@@ -578,8 +438,6 @@ def main(args):
     parser.add_argument('-u','--user', help='Administrator username')
     parser.add_argument('-p','--password', help='Administrator password')
     parser.add_argument('-l', '--log', help='Path to log file', default='python_process.log')
-    parser.add_argument("-ll", "--loggingLevel", help="Logging level", default="INFO",
-                        choices = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"])
 
     args = parser.parse_args()
 
@@ -590,36 +448,36 @@ def main(args):
         return 3
 
     try:
-        localLogger.initialise(portal_config.logfile)
+#        localLogger.initialise(portal_config.logfile)
 #        localLogger.initialise(None,False,"DEBUG")
-#        localLogger.initialise(None, False, args.loggingLevel)
+        localLogger.initialise(None)
 
-        gisInfo = GISInfo(args.url, args.user, args.password)
+        gis = GIS(args.url, args.user, args.password, verify_cert=False)
         #
         # Install the portal certificate
         #
-        results.append(installSSLCertificate(gisInfo))
+        results.append(installSSLCertificate(gis))
         if not all(results) and not portal_config.continueOnError:
             continueProcessing = False
         #
         # Configure roles
         #
         if continueProcessing:
-            results.append(configureRoles(gisInfo))
+            results.append(configureRoles(gis))
             if not all(results) and not portal_config.continueOnError:
                 continueProcessing = False
         #
         # Creating/Updating Groups
         #
         if continueProcessing:
-            results.append(createGroups(gisInfo))
+            results.append(createGroups(gis))
             if not all(results) and not portal_config.continueOnError:
                 continueProcessing = False
         #
         # Creating/Updating Users
         #
         if continueProcessing:
-            results.append(createUsers(gisInfo))
+            results.append(createUsers(gis))
             if not all(results) and not portal_config.continueOnError:
                 continueProcessing = False
 
@@ -628,28 +486,28 @@ def main(args):
         # disableLivingAtlas has been set to True.
         #
 #        if continueProcessing and portal_config.disableLivingAtlas:
-#            results.append(disableLivingAtlas(gisInfo))
+#            results.append(disableLivingAtlas(gis))
 #            if not all(results) and not portal_config.continueOnError:
 #                continueProcessing = False
         #
         # Update security configuration
         #
         if continueProcessing:
-            results.append(configureSecurity(gisInfo))
+            results.append(configureSecurity(gis))
             if not all(results) and not portal_config.continueOnError:
                 continueProcessing = False
         #
         # Update general properties
         #
         if continueProcessing:
-            results.append(configureGeneralProperties(gisInfo))
+            results.append(configureGeneralProperties(gis))
             if not all(results) and not portal_config.continueOnError:
                 continueProcessing = False
         #
         # Update system properties
         #
         if continueProcessing:
-            results.append(configureSystemProperties(gisInfo))
+            results.append(configureSystemProperties(gis))
             if not all(results) and not portal_config.continueOnError:
                 continueProcessing = False
 

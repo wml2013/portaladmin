@@ -1,0 +1,251 @@
+18-06-2018 15:38:03 ********************************************************************************
+18-06-2018 15:38:05 Working on SSL Certificate
+18-06-2018 15:38:05   Checking registered SSL Certificate
+18-06-2018 15:38:08     Checking if SSL Certificate exists
+18-06-2018 15:38:08     Editing existing SSL Protocols & Cipher Suites
+18-06-2018 15:38:09     Certificate with alias "portal" is already installed as the portal certificate
+18-06-2018 15:38:09   Creating roles
+18-06-2018 15:38:10     Creating role: ST User
+18-06-2018 15:38:10     Creating role: ST Viewer
+18-06-2018 15:38:11     Creating role: ST Admin
+18-06-2018 15:38:12     Creating role: ST Engineer
+18-06-2018 15:38:13     Creating role: ST Publisher
+18-06-2018 15:38:13   Creating groups
+18-06-2018 15:38:13     Creating group: ST Admin
+18-06-2018 15:38:15     Creating group: ST User
+18-06-2018 15:38:15     Creating group: The Carousel
+18-06-2018 15:38:16   Creating users
+18-06-2018 15:38:16 Retrieving roles(start=1, num=100)
+18-06-2018 15:38:16 Retrieving org users (start=1, num=100)
+18-06-2018 15:38:16     Creating user: kirk ESC Admin
+18-06-2018 15:38:17       Assigning role: ESC Admin
+18-06-2018 15:38:17         Undefined role: ESC Admin
+18-06-2018 15:38:17       Adding to groups:
+18-06-2018 15:38:17 Searching groups (q=ST Admin accountid:0123456789ABCDEF, start=1, num=100)
+18-06-2018 15:38:17         added to group "ST Admin"
+18-06-2018 15:38:17     Creating user: picard ESC Admin
+18-06-2018 15:38:18       Assigning role: ESC Admin
+18-06-2018 15:38:18         Undefined role: ESC Admin
+18-06-2018 15:38:18       Adding to groups:
+18-06-2018 15:38:18 Searching groups (q=ST Admin accountid:0123456789ABCDEF, start=1, num=100)
+18-06-2018 15:38:19         added to group "ST Admin"
+18-06-2018 15:38:19     Creating user: archer ESC User
+18-06-2018 15:38:20       Assigning role: ESC User
+18-06-2018 15:38:20         Undefined role: ESC User
+18-06-2018 15:38:20       Adding to groups:
+18-06-2018 15:38:20 Searching groups (q=ST User accountid:0123456789ABCDEF, start=1, num=100)
+18-06-2018 15:38:21     Expecting value: line 1 column 1 (char 0)
+                        Failed add user to group ST User
+                        Traceback:
+                          File "PortalAdmin.py", line 228, in createUsers
+                            groups_result = group.add_users([user['username']])
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 2865, in add_users
+                            return self._portal.add_group_users(users, self.groupid)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 201, in add_group_users
+                            postdata)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:38:21     Creating user: janeway ESC User
+18-06-2018 15:38:29     Expecting value: line 1 column 1 (char 0)
+                        Failed to create user janeway
+                        Traceback:
+                          File "PortalAdmin.py", line 188, in createUsers
+                            role='org_user')
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1145, in create
+                            self._portal.con.post(createuser_url, params)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:38:29   Disabling Living Atlas
+18-06-2018 15:38:33     Expecting value: line 1 column 1 (char 0)
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 254, in disableLivingAtlas
+                            livingAtlas = gis.admin.living_atlas
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\portaladmin.py", line 199, in living_atlas
+                            self._livingatlas = LivingAtlas(url=url, gis=self._gis)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\_livingatlas.py", line 78, in __init__
+                            super(LivingAtlas, self).__init__(url=url, gis=gis)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\_base.py", line 29, in __init__
+                            self._init(connection=self._con)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\_livingatlas.py", line 99, in _init
+                            for group in groups.search(query=self._groupquery):
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1739, in search
+                            groups = self._portal.search_groups(query, sort_field, sort_order, max_groups, outside_org)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 1660, in search_groups
+                            resp = self._groups_page(q, 1, min(max_groups,100), sort_field, sort_order)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 2322, in _groups_page
+                            return self.con.post('community/groups', postdata)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:38:33   Configuration security options
+18-06-2018 15:38:37     string indices must be integers
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 310, in configureSecurity
+                            print("Current role: " + updConfig["defaultRoleForUser"])
+                          TypeError: string indices must be integers
+18-06-2018 15:38:37   Configuring general properties
+18-06-2018 15:38:42     Expecting value: line 1 column 1 (char 0)
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 351, in configureGeneralProperties
+                            result = gis.update_properties(updProperties)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 384, in update_properties
+                            resp = self._portal.con.post('portals/self/update', postdata)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:38:42   Configuring system properties
+18-06-2018 15:38:50     'str' object does not support item assignment
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 377, in configureSystemProperties
+                            updProperties[k] = portal_config.systemProperties[k]
+                          TypeError: 'str' object does not support item assignment
+18-06-2018 15:38:50   Script completed with errors
+18-06-2018 15:47:41 ********************************************************************************
+18-06-2018 15:47:44 Working on SSL Certificate
+18-06-2018 15:47:44   Checking registered SSL Certificate
+18-06-2018 15:47:47     Checking if SSL Certificate exists
+18-06-2018 15:47:47     Editing existing SSL Protocols & Cipher Suites
+18-06-2018 15:47:49     Certificate with alias "portal" is already installed as the portal certificate
+18-06-2018 15:47:49   Creating roles
+18-06-2018 15:47:49     Creating role: ST User
+18-06-2018 15:47:50     Creating role: ST Viewer
+18-06-2018 15:47:50     Creating role: ST Admin
+18-06-2018 15:47:51     Creating role: ST Engineer
+18-06-2018 15:47:51     Creating role: ST Publisher
+18-06-2018 15:47:52   Creating groups
+18-06-2018 15:47:52     Creating group: ST Admin
+18-06-2018 15:47:53     Creating group: ST User
+18-06-2018 15:47:54     Creating group: The Carousel
+18-06-2018 15:47:54   Creating users
+18-06-2018 15:47:54 Retrieving roles(start=1, num=100)
+18-06-2018 15:47:54 Retrieving org users (start=1, num=100)
+18-06-2018 15:47:55     Creating user: kirk ESC Admin
+18-06-2018 15:47:56       Assigning role: ESC Admin
+18-06-2018 15:47:56         Undefined role: ESC Admin
+18-06-2018 15:47:56       Adding to groups:
+18-06-2018 15:47:56 Searching groups (q=ST Admin accountid:0123456789ABCDEF, start=1, num=100)
+18-06-2018 15:47:56         added to group "ST Admin"
+18-06-2018 15:47:56     Creating user: picard ESC Admin
+18-06-2018 15:47:57       Assigning role: ESC Admin
+18-06-2018 15:47:57         Undefined role: ESC Admin
+18-06-2018 15:47:57       Adding to groups:
+18-06-2018 15:47:57 Searching groups (q=ST Admin accountid:0123456789ABCDEF, start=1, num=100)
+18-06-2018 15:47:57         added to group "ST Admin"
+18-06-2018 15:47:57     Creating user: archer ESC User
+18-06-2018 15:47:58       Assigning role: ESC User
+18-06-2018 15:47:58         Undefined role: ESC User
+18-06-2018 15:47:58       Adding to groups:
+18-06-2018 15:47:58 Searching groups (q=ST User accountid:0123456789ABCDEF, start=1, num=100)
+18-06-2018 15:47:59         added to group "ST User"
+18-06-2018 15:47:59     Creating user: janeway ESC User
+18-06-2018 15:48:13     Expecting value: line 1 column 1 (char 0)
+                        Failed to create user janeway
+                        Traceback:
+                          File "PortalAdmin.py", line 188, in createUsers
+                            role='org_user')
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1146, in create
+                            user = self.get(username)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1205, in get
+                            user = self._portal.get_user(username)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 1103, in get_user
+                            return self.con.post('community/users/' + username, self._postdata())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:48:13   Disabling Living Atlas
+18-06-2018 15:48:21     Expecting value: line 1 column 1 (char 0)
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 254, in disableLivingAtlas
+                            livingAtlas = gis.admin.living_atlas
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\portaladmin.py", line 199, in living_atlas
+                            self._livingatlas = LivingAtlas(url=url, gis=self._gis)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\_livingatlas.py", line 78, in __init__
+                            super(LivingAtlas, self).__init__(url=url, gis=gis)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\_base.py", line 29, in __init__
+                            self._init(connection=self._con)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\admin\_livingatlas.py", line 99, in _init
+                            for group in groups.search(query=self._groupquery):
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1739, in search
+                            groups = self._portal.search_groups(query, sort_field, sort_order, max_groups, outside_org)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 1660, in search_groups
+                            resp = self._groups_page(q, 1, min(max_groups,100), sort_field, sort_order)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 2322, in _groups_page
+                            return self.con.post('community/groups', postdata)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:48:21   Configuration security options
+18-06-2018 15:48:25     string indices must be integers
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 310, in configureSecurity
+                            print("Current role: " + updConfig["defaultRoleForUser"])
+                          TypeError: string indices must be integers
+18-06-2018 15:48:25   Configuring general properties
+18-06-2018 15:48:29     Expecting value: line 1 column 1 (char 0)
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 351, in configureGeneralProperties
+                            result = gis.update_properties(updProperties)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 384, in update_properties
+                            resp = self._portal.con.post('portals/self/update', postdata)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                            resp_json = json.loads(resp_data)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                            return _default_decoder.decode(s)
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                            obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                          File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                            raise JSONDecodeError("Expecting value", s, err.value) from None
+                          json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+18-06-2018 15:48:29   Configuring system properties
+18-06-2018 15:48:38     'str' object does not support item assignment
+                        ERROR: Unexpected exception thrown
+                        Traceback:
+                          File "PortalAdmin.py", line 377, in configureSystemProperties
+                            updProperties[k] = portal_config.systemProperties[k]
+                          TypeError: 'str' object does not support item assignment
+18-06-2018 15:48:38   Script completed with errors
