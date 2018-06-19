@@ -2,3 +2,4 @@ access,description,isFav,isInvitationOnly,isViewOnly,phone,snippet,sortField,sor
 org,ST Admin. ,FALSE,FALSE,FALSE,null,ESC Admin.   ,title,asc,"ESC Admin",Icons/CentralServices.png,ST Admin
 org,ST User.  ,FALSE,FALSE,FALSE,null,ESC USer.    ,title,asc,"ESC User",Icons/CustomerService.png,ST User
 org,The Carousel.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"carousel",Icons/Churn.png,The Carousel
+org,Away Team.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"carousel",Icons/Churn.png,Away Team

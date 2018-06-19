@@ -261,13 +261,13 @@ def configureRoles(gisInfo):
         localLogger.decIndent()
 
 def createGroups(gisInfo):
-    """Create groups using a CSV file called groups.csv"""
+    """Create groups using a CSV file called groups_trek.csv"""
     localLogger.write("Creating groups")
     localLogger.incIndent()
     results = []
 
     try:
-        with open("groups.csv", 'r') as groups_csv:
+        with open("groups_trek.csv", 'r') as groups_csv:
             groups = csv.DictReader(groups_csv)
             for group in groups:
                 try:
@@ -302,13 +302,13 @@ def createGroups(gisInfo):
         localLogger.decIndent()
 
 def createUsers(gisInfo):
-    """Create users using a CSV file called users.csv"""
+    """Create users using a CSV file called users_trek.csv"""
     localLogger.write("Creating users")
     localLogger.incIndent()
     results = []
 
     try:
-        with open("users.csv", 'r') as users_csv:
+        with open("users_trek.csv", 'r') as users_csv:
             users = csv.DictReader(users_csv)
 
             for user in users:
@@ -680,4 +680,3 @@ def main(args):
 if __name__ == '__main__':
     exit_code = main(sys.argv)
     exit (exit_code)
-    
