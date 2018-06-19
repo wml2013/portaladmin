@@ -178,7 +178,7 @@ def installSSLCertificate(gisInfo):
     """
     Registering the certificate to be used by the Portal.
     """
-    #localLogger.write("stdout check - debug only")
+
     localLogger.write("Working on SSL Certificate")
     localLogger.incIndent()
 
@@ -598,6 +598,7 @@ def main(args):
     try:
 #        localLogger.initialise(portal_config.logfile)
 #        localLogger.initialise(None,False,"DEBUG")
+#        localLogger.initialise(None)
         localLogger.initialise(None, False, args.loggingLevel)
 
         gisInfo = GISInfo(args.url, args.user, args.password)
@@ -679,4 +680,4 @@ def main(args):
 if __name__ == '__main__':
     exit_code = main(sys.argv)
     exit (exit_code)
-
+    
