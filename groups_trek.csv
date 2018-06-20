@@ -10,3 +10,4 @@ public,Star Trek: Enterprise.  ,TRUE,FALSE,FALSE,null,Star Trek: Enterprise.    
 public,Star Trek: Deep Space Nine.  ,TRUE,FALSE,FALSE,null,Star Trek: Deep Space Nine.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Deep Space Nine"
 public,Star Trek: Voyager.  ,TRUE,FALSE,FALSE,null,Star Trek: Voyager.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Voyager"
 public,Star Trek: Discovery.  ,TRUE,FALSE,FALSE,null,Star Trek: Discovery.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Discovery"
+public,Star Trek: The Next Generation.  ,TRUE,FALSE,FALSE,null,Star Trek: The Next Generation.    ,title,asc,"tng",Icons/startrek.png,"Star Trek:TNG"
