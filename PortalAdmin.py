@@ -3,9 +3,11 @@
 #
 # To run: python portaladmin.py --config portalconfigsettings.py --url "https://skanska.azure.esriuk.com/arcgis" -u "siteadmin" -p "Jkkjjxx"
 #
-#
 # Note: this is for Ming's own testing as it creates users from the Star Trek Universe. 
-
+# 
+# Version: 11.1
+#
+# Date: 20th June 2018
 import os, sys
 import json
 import importlib.util
@@ -92,14 +94,17 @@ class GISInfo(object):
                                                       email=userDict['email'],
                                                       role='org_user')
                 if newUser != None:
-                    return waitForUser(self, newUser["username"])
-                else:
-                    return None
+                    waitForUser(self, newUser["username"])
             except:
                 self.ResetGIS()
+            time.sleep(5)
         #
         # Try 1 more time as we are getting repeated exceptions
         #
+        for usr in self.allUsers:
+            if usr["username"].lower() == userDict["username"].lower():
+                return usr
+
         newUser = self.gis.users.create(username=userDict['username'],
                                             password=userDict['password'],
                                             firstname=userDict['Firstname'],
@@ -240,7 +245,7 @@ def configureRoles(gisInfo):
                                                     description = configRole["description"],
                                                     privileges = configRole["privileges"])
                 if result == None:
-                    localLogger.write("Failed to create role")
+                    localLogger.write("ERROR: Failed to create role")
                     results.append(False)
                 else:
                     gisInfo.waitForRole(result.name)
@@ -256,7 +261,7 @@ def configureRoles(gisInfo):
         localLogger.decIndent()
 
 def createGroups(gisInfo):
-    """Create groups using a CSV file called groups.csv"""
+    """Create groups using a CSV file called groups_trek.csv"""
     localLogger.write("Creating groups")
     localLogger.incIndent()
     results = []
@@ -275,7 +280,7 @@ def createGroups(gisInfo):
                         localLogger.write("Creating group: " + group['title'])
                         newGroup = gisInfo.gis.groups.create_from_dict(group)
                         if newGroup == None:
-                            localLogger.write("  Failed to create group {}".format(group["title"]))
+                            localLogger.write("  ERROR: Failed to create group {}".format(group["title"]))
                             results.append(False)
                         else:
                             gisInfo.waitForGroup(newGroup["title"])
@@ -285,9 +290,9 @@ def createGroups(gisInfo):
                         results.append(True)
                 except Exception as create_ex:
                     if "title" in group:
-                        localLogger.write(FormatExceptions("Failed to create group {}".format(group["title"]), create_ex))
+                        localLogger.write(FormatExceptions("ERROR: Failed to create group {}".format(group["title"]), create_ex))
                     else:
-                        localLogger.write(FormatExceptions("Failed to create group", create_ex))
+                        localLogger.write(FormatExceptions("ERROR: Failed to create group", create_ex))
                     results.append(False)
         return all(results)
     except Exception as ex:
@@ -308,6 +313,7 @@ def createUsers(gisInfo):
 
             for user in users:
                 foundUser = None
+                result = True
                 for extusr in gisInfo.allUsers:
                     if extusr["username"].lower() == user["username"].lower():
                         foundUser = extusr
@@ -317,13 +323,13 @@ def createUsers(gisInfo):
                     try:
                         foundUser = gisInfo.createUser(user)
                         if foundUser == None:
-                            localLogger.write("Failed to create user {}".format(user["username"]))
-                            results.append(False)
+                            localLogger.write("ERROR: Failed to create user {}".format(user["username"]))
+                            result = False
                         else:
                             foundUser = gisInfo.waitForUser(foundUser["username"])
-                            results.append(True)
                     except Exception as ex:
-                        localLogger.write(FormatExceptions("Failed to create user {}".format(user["username"]), ex))
+                        localLogger.write(FormatExceptions("ERROR: Failed to create user {}".format(user["username"]), ex))
+                        result = False
                 else:
                     localLogger.write("User \"{}\" already exists".format(foundUser["username"]))
                 #
@@ -334,14 +340,14 @@ def createUsers(gisInfo):
                     localLogger.write("  Assigning role: " + user['role'])
                     foundRole = _findRole(gisInfo, user['role'])
                     if foundRole == None:
-                        localLogger.write("    Undefined role: {}".format(user["role"]))
+                        localLogger.write("    ERROR: Undefined role: {}".format(user["role"]))
+                        result = False
                     else:
                         try:
                             foundUser.update_role(foundRole)
-                            results.append(True)
                         except Exception as role_ex:
-                            localLogger.write(FormatExceptions("Failed to assign role \"{}\" to user".format(foundRole.name), role_ex))
-                            results.append(False)
+                            localLogger.write(FormatExceptions("ERROR: Failed to assign role \"{}\" to user".format(foundRole.name), role_ex))
+                            result = False
 
                     # Now assign user to group(s)
                     localLogger.write("  Adding to groups:")
@@ -359,22 +365,20 @@ def createUsers(gisInfo):
                             group_members = foundGroup.get_members()
                             if foundUser["username"] in group_members["users"]:
                                 localLogger.write("    already a member of group \"{}\"".format(foundGroup["title"]))
-                                results.append(True)
                             else:
                                 try:
                                     groups_result = foundGroup.add_users([foundUser["username"]])
                                     if len(groups_result['notAdded']) == 0:
                                         localLogger.write("    added to group \"{}\"".format(foundGroup["title"]))
-                                        results.append(True)
                                     else:
-                                        localLogger.write("    not added to group \"{}\"\n      result: {}".format(foundGroup["title"], groups_result))
-                                        results.append(False)
+                                        localLogger.write("    ERROR: Not added to group \"{}\"\n      result: {}".format(foundGroup["title"], groups_result))
+                                        result = False
                                 except Exception as groups_ex:
-                                    localLogger.write(FormatExceptions("Failed add user to group {}".format(foundGroup["title"]), groups_ex))
-                                    results.append(False)
+                                    localLogger.write(FormatExceptions("ERROR: Failed add user to group {}".format(foundGroup["title"]), groups_ex))
+                                    result = False
                         else:
-                            localLogger.write("    Group \"{}\" not found".format(g))
-                            results.append(False)
+                            localLogger.write("    ERROR: Group \"{}\" not found".format(g))
+                            result = False
         return all(results)
     except Exception as ex:
         localLogger.write(FormatExceptions("ERROR: Unexpected exception thrown", ex))
@@ -594,6 +598,7 @@ def main(args):
     try:
         localLogger.initialise(portal_config.logfile)
 #        localLogger.initialise(None,False,"DEBUG")
+#        localLogger.initialise(None)
 #        localLogger.initialise(None, False, args.loggingLevel)
 
         gisInfo = GISInfo(args.url, args.user, args.password)
@@ -675,4 +680,3 @@ def main(args):
 if __name__ == '__main__':
     exit_code = main(sys.argv)
     exit (exit_code)
-

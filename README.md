@@ -19,11 +19,17 @@ This is the main configuration file with configureable settings, majority of the
 ** portaladmin_cleanup.py **
 This file removes all users (apart from siteadmin and admin -- configureable), customised roles, customised groups and users' content
 
+e.g. syntax:
+python.exe portaladmin_cleanup.py <https://skanska.azure.esriuk.com/arcgis> --user "siteadmin" --password "kkfkjd88jd"
+
 ** publish_content.py **
 This file reads the users_trek.csv or users_large_trek.csv to attach content to each user
 
+e.g. syntax:
+python.exe publish_content.py <https://skanska.azure.esriuk.com/arcgis> --user "siteadmin" --password "kkfkjd88jd"
+
 ** users_trek.csv **
-Contains a list of Star Trek Captains and characters. Used as basis for the creation of new Portal users. 
+Contains a list of Star Trek Captains and characters. Used as basis for the creation of new Portal users.
 
 ** groups_trek.csv **
 Contains a list of groups that users are assigned to.

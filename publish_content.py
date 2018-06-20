@@ -12,7 +12,7 @@ try:
     parser.add_argument('url', help='Portal url of the form: https://portalname.domain.com/webadaptor')
     parser.add_argument('-u','--user', help='Administrator username', default='siteadmin')
     parser.add_argument('-p','--password', help='Administrator password', default='x]984<ngb3!')
-    parser.add_argument('-l','--log', help='Path to log file',default='python_process.log')
+    parser.add_argument('-l','--log', help='Path to log file',default='publish_content.log')
 
     args = parser.parse_args()
     #endregion
