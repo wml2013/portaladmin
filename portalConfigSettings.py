@@ -11,7 +11,7 @@ logfile = ".\\Logs\\portal_config.log"
 continueOnError = True
 #
 # List of roles to be created.
-# Currently use ESC roles.
+# Currently use Star Trek roles.
 #
 roles = [
     {"name" : "ST User",
@@ -98,8 +98,8 @@ disableLivingAtlas = True
 # General portal properties
 # Update name and description as required
 generalProperties = {
-    "name" : "Star Trek Test portal June 20 v8",
-    "description" : "Star Trek Test portal June 20 v8",
+    "name" : "Star Trek Test portal June 20 v9",
+    "description" : "Star Trek Test portal June 20 v9",
     "access" : "private",
     "allSSL" : True
 }
@@ -127,6 +127,10 @@ systemProperties = {
 }
 #
 # SSL Certificate information
+#
+# Import the certificate (*pfx) into Portal and give it an alias
+# Default alias is 'portal' for the self-signed certificate
+# If alias is different; then code will install and configure new (alias) certificate
 #
 sslCertificates = {
     "alias" : "portal",

@@ -1,0 +1,62 @@
+20-06-2018 14:08:44 Working on SSL Certificate
+20-06-2018 14:08:44   Checking registered SSL Certificate
+20-06-2018 14:08:49   Checking if SSL Certificate exists
+20-06-2018 14:08:49   Editing existing SSL Protocols & Cipher Suites
+20-06-2018 14:08:51   Certificate with alias "portal" is already installed as the portal certificate
+20-06-2018 14:08:51 Creating roles
+20-06-2018 14:08:51   Creating role: ST User
+20-06-2018 14:08:52   Creating role: ST Viewer
+20-06-2018 14:08:53   Creating role: ST Captain
+20-06-2018 14:08:54   Creating role: ST Engineer
+20-06-2018 14:08:55   Creating role: ST Publisher
+20-06-2018 14:08:56 Creating groups
+20-06-2018 14:08:56   Creating group: ST Captain
+20-06-2018 14:08:58   Creating group: ST User
+20-06-2018 14:08:59     waiting for group "ST User" to be created
+20-06-2018 14:09:56 Unable to perform group search.
+20-06-2018 14:09:56 'q' parameter must be specified.
+20-06-2018 14:10:05   Creating group: The Carousel
+20-06-2018 14:10:06     waiting for group "The Carousel" to be created
+20-06-2018 14:10:11   Creating group: Away Team
+20-06-2018 14:10:12     waiting for group "Away Team" to be created
+20-06-2018 14:10:17   Creating group: Crew
+20-06-2018 14:10:18     waiting for group "Crew" to be created
+20-06-2018 14:10:23   Creating group: Engineering
+20-06-2018 14:10:24     waiting for group "Engineering" to be created
+20-06-2018 14:10:29   Creating group: Star Trek:TOS
+20-06-2018 14:10:31   Creating group: Star Trek:Enterprise
+20-06-2018 14:10:32     waiting for group "Star Trek:Enterprise" to be created
+20-06-2018 14:10:38   Creating group: Star Trek:Deep Space Nine
+20-06-2018 14:10:39   Creating group: Star Trek:Voyager
+20-06-2018 14:10:40     waiting for group "Star Trek:Voyager" to be created
+20-06-2018 14:10:45   Creating group: Star Trek:Discovery
+20-06-2018 14:10:46     waiting for group "Star Trek:Discovery" to be created
+20-06-2018 14:10:52   Creating group: Star Trek:TNG
+20-06-2018 14:10:53     waiting for group "Star Trek:TNG" to be created
+20-06-2018 14:10:58 Creating users
+20-06-2018 14:10:58   Creating user kirk, role ST Captain
+20-06-2018 14:11:07     Assigning role: ST Captain
+20-06-2018 14:11:08     Adding to groups:
+20-06-2018 14:11:08       added to group "Star Trek:TOS"
+20-06-2018 14:11:08   Creating user picard, role ST Captain
+20-06-2018 14:11:17     Assigning role: ST Captain
+20-06-2018 14:11:18     Adding to groups:
+20-06-2018 14:11:18       added to group "Star Trek:TNG"
+20-06-2018 14:11:18   Creating user archer, role ST Captain
+20-06-2018 14:11:26     Assigning role: ST Captain
+20-06-2018 14:11:27     Adding to groups:
+20-06-2018 14:11:28       added to group "Star Trek:Discovery"
+20-06-2018 14:11:28   Creating user janeway, role ST Captain
+20-06-2018 14:11:36     Assigning role: ST Captain
+20-06-2018 14:11:37     Adding to groups:
+20-06-2018 14:11:37       added to group "Star Trek:Voyager"
+20-06-2018 14:11:37   Creating user sisko, role ST Captain
+20-06-2018 14:11:46     Assigning role: ST Captain
+20-06-2018 14:11:46     Adding to groups:
+20-06-2018 14:11:47       added to group "Star Trek:Deep Space Nine"
+20-06-2018 14:11:47 Configuration security options
+20-06-2018 14:11:48   Current default role: account_user
+20-06-2018 14:11:49 Configuring general properties
+20-06-2018 14:11:50 Configuring system properties
+20-06-2018 14:11:50   No system properties require changing
+20-06-2018 14:11:50 Script completed successfully
