@@ -1,6 +1,6 @@
 Firstname,Lastname,email,username,password,role,level,groups,assigned_state
-William,Shatner,william.shatner@company.com,kirk,kirk@123,"ESC Admin",2,"ST Admin",KS
-Patrick,Stewart,patrick.stewart@company.com,picard,picard@123,"ESC Admin",2,"ST Admin",INV
-Scott,Bakula,Scott.Bakula@company.com,archer,archer@123,"ESC User",2,"ST User",IL
-Jane,Mulgrew,Jane.Mulgrew@company.com,janeway,janeway@123,"ESC User",2,"ST User",UT
-
+William,Shatner,william.shatner@company.com,kirk,kirk@123,"ST Captain",2,"Star Trek:TOS",KS
+Patrick,Stewart,patrick.stewart@company.com,picard,picard@123,"ST Captain",2,"Star Trek:Enterprise",INV
+Scott,Bakula,scott.bakula@company.com,archer,archer@123,"ST Captain",2,"Star Trek:Discovery",IL
+Jane,Mulgrew,jane.mulgrew@company.com,janeway,janeway@123,"ST Captain",2,"Star Trek:Voyager",UT
+Avery, Brooks,avery.brooks@company.com,sisko,sisko@123,"ST Captain",2,"Star Trek:Deep Space Nine",UT

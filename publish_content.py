@@ -18,7 +18,7 @@ try:
     #endregion
 
     # Read the csv containing user accounts and their territory info
-    csv_path = "users_trek.csv"
+    csv_path = "users_large_trek.csv"
 
     # Read the log file in append mode
     log_file = open(args.log, 'a')

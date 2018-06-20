@@ -25,8 +25,8 @@ roles = [
      "privileges" : [
          'portal:user:joinGroup']
     },
-    {"name" : "ST Admin",
-     "description" : "Star Trek Admin",
+    {"name" : "ST Captain",
+     "description" : "Star Trek Captain",
      "privileges" : [
          'portal:admin:viewUsers',
          'portal:admin:updateUsers',
