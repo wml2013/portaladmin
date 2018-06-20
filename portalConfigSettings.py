@@ -98,8 +98,8 @@ disableLivingAtlas = True
 # General portal properties
 # Update name and description as required
 generalProperties = {
-    "name" : "Star Trek Test portal June 19 v3",
-    "description" : "Star Trek Test portal June 19 v3",
+    "name" : "Star Trek Test portal June 20 v6",
+    "description" : "Star Trek Test portal June 20 v6",
     "access" : "private",
     "allSSL" : True
 }

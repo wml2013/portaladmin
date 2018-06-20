@@ -52,22 +52,22 @@ class Logger(object):
 
 # logging to console only
 
-        if logFile != None:
-            if not os.path.exists(os.path.dirname(logFile)):
-                os.makedirs(os.path.dirname(logFile))
-
-            isNewLogFile = self.addLogFile(logFile)
-            if not isNewLogFile:
-                logging.info("*".rjust(80,"*"))
+#        if logFile != None:
+#            if not os.path.exists(os.path.dirname(logFile)):
+#                os.makedirs(os.path.dirname(logFile))
+#
+#            isNewLogFile = self.addLogFile(logFile)
+#            if not isNewLogFile:
+#                logging.info("*".rjust(80,"*"))
 
 # logging to file and console
 
-#        if not os.path.exists(os.path.dirname(logFile)):
-#           os.makedirs(os.path.dirname(logFile))
-#
-#        isNewLogFile = self.addLogFile(logFile)
-#        if not isNewLogFile:
-#                logging.info("*".rjust(80,"*"))
+        if not os.path.exists(os.path.dirname(logFile)):
+           os.makedirs(os.path.dirname(logFile))
+
+        isNewLogFile = self.addLogFile(logFile)
+        if not isNewLogFile:
+                logging.info("*".rjust(80,"*"))
 
         if not noConsoleOutput:
             stdch = logging.StreamHandler()

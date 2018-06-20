@@ -596,10 +596,10 @@ def main(args):
         return 3
 
     try:
-#        localLogger.initialise(portal_config.logfile)
+        localLogger.initialise(portal_config.logfile)
 #        localLogger.initialise(None,False,"DEBUG")
 #        localLogger.initialise(None)
-        localLogger.initialise(None, False, args.loggingLevel)
+#        localLogger.initialise(None, False, args.loggingLevel)
 
         gisInfo = GISInfo(args.url, args.user, args.password)
         #
