@@ -32,7 +32,7 @@ try:
                 template_webmap_dict = json.load(webmap_file)
 
     # Connect to the GIS
-    gis = GIS(args.url, args.user, args.password)
+    gis = GIS(args.url, args.user, args.password,verify_cert=False)
 
     # Loop through each user and publish the content
     with open(csv_path, 'r') as csv_handle:
@@ -85,6 +85,6 @@ try:
             except Exception as pub_ex:
                 log_file.write("Error : " + str(pub_ex))
     log_file.close()
-    print("0")
+    print("0 - Success")
 except Exception as global_ex:
-    print("1")
+    print("1 - Fail")
