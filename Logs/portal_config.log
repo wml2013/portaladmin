@@ -1,62 +1,112 @@
-20-06-2018 14:08:44 Working on SSL Certificate
-20-06-2018 14:08:44   Checking registered SSL Certificate
-20-06-2018 14:08:49   Checking if SSL Certificate exists
-20-06-2018 14:08:49   Editing existing SSL Protocols & Cipher Suites
-20-06-2018 14:08:51   Certificate with alias "portal" is already installed as the portal certificate
-20-06-2018 14:08:51 Creating roles
-20-06-2018 14:08:51   Creating role: ST User
-20-06-2018 14:08:52   Creating role: ST Viewer
-20-06-2018 14:08:53   Creating role: ST Captain
-20-06-2018 14:08:54   Creating role: ST Engineer
-20-06-2018 14:08:55   Creating role: ST Publisher
-20-06-2018 14:08:56 Creating groups
-20-06-2018 14:08:56   Creating group: ST Captain
-20-06-2018 14:08:58   Creating group: ST User
-20-06-2018 14:08:59     waiting for group "ST User" to be created
-20-06-2018 14:09:56 Unable to perform group search.
-20-06-2018 14:09:56 'q' parameter must be specified.
-20-06-2018 14:10:05   Creating group: The Carousel
-20-06-2018 14:10:06     waiting for group "The Carousel" to be created
-20-06-2018 14:10:11   Creating group: Away Team
-20-06-2018 14:10:12     waiting for group "Away Team" to be created
-20-06-2018 14:10:17   Creating group: Crew
-20-06-2018 14:10:18     waiting for group "Crew" to be created
-20-06-2018 14:10:23   Creating group: Engineering
-20-06-2018 14:10:24     waiting for group "Engineering" to be created
-20-06-2018 14:10:29   Creating group: Star Trek:TOS
-20-06-2018 14:10:31   Creating group: Star Trek:Enterprise
-20-06-2018 14:10:32     waiting for group "Star Trek:Enterprise" to be created
-20-06-2018 14:10:38   Creating group: Star Trek:Deep Space Nine
-20-06-2018 14:10:39   Creating group: Star Trek:Voyager
-20-06-2018 14:10:40     waiting for group "Star Trek:Voyager" to be created
-20-06-2018 14:10:45   Creating group: Star Trek:Discovery
-20-06-2018 14:10:46     waiting for group "Star Trek:Discovery" to be created
-20-06-2018 14:10:52   Creating group: Star Trek:TNG
-20-06-2018 14:10:53     waiting for group "Star Trek:TNG" to be created
-20-06-2018 14:10:58 Creating users
-20-06-2018 14:10:58   Creating user kirk, role ST Captain
-20-06-2018 14:11:07     Assigning role: ST Captain
-20-06-2018 14:11:08     Adding to groups:
-20-06-2018 14:11:08       added to group "Star Trek:TOS"
-20-06-2018 14:11:08   Creating user picard, role ST Captain
-20-06-2018 14:11:17     Assigning role: ST Captain
-20-06-2018 14:11:18     Adding to groups:
-20-06-2018 14:11:18       added to group "Star Trek:TNG"
-20-06-2018 14:11:18   Creating user archer, role ST Captain
-20-06-2018 14:11:26     Assigning role: ST Captain
-20-06-2018 14:11:27     Adding to groups:
-20-06-2018 14:11:28       added to group "Star Trek:Discovery"
-20-06-2018 14:11:28   Creating user janeway, role ST Captain
-20-06-2018 14:11:36     Assigning role: ST Captain
-20-06-2018 14:11:37     Adding to groups:
-20-06-2018 14:11:37       added to group "Star Trek:Voyager"
-20-06-2018 14:11:37   Creating user sisko, role ST Captain
-20-06-2018 14:11:46     Assigning role: ST Captain
-20-06-2018 14:11:46     Adding to groups:
-20-06-2018 14:11:47       added to group "Star Trek:Deep Space Nine"
-20-06-2018 14:11:47 Configuration security options
-20-06-2018 14:11:48   Current default role: account_user
-20-06-2018 14:11:49 Configuring general properties
-20-06-2018 14:11:50 Configuring system properties
-20-06-2018 14:11:50   No system properties require changing
-20-06-2018 14:11:50 Script completed successfully
+21-06-2018 10:30:43 Working on SSL Certificate
+21-06-2018 10:30:43   Checking registered SSL Certificate
+21-06-2018 10:30:50   Checking if SSL Certificate exists
+21-06-2018 10:30:50   Editing existing SSL Protocols & Cipher Suites
+21-06-2018 10:30:51   Certificate with alias "portal" is already installed as the portal certificate
+21-06-2018 10:30:51 Creating roles
+21-06-2018 10:30:52   Creating role: ST User
+21-06-2018 10:30:53   Creating role: ST Viewer
+21-06-2018 10:30:54   Creating role: ST Captain
+21-06-2018 10:30:55   Creating role: ST Engineer
+21-06-2018 10:30:56   Creating role: ST Publisher
+21-06-2018 10:30:57 Creating groups
+21-06-2018 10:30:57   Creating group: ST Captain
+21-06-2018 10:31:01   Creating group: ST User
+21-06-2018 10:31:02   Creating group: The Carousel
+21-06-2018 10:31:15   Expecting value: line 1 column 1 (char 0)
+                      ERROR: Failed to create group The Carousel
+                      Traceback:
+                        File "portaladmin.py", line 281, in createGroups
+                          newGroup = gisInfo.gis.groups.create_from_dict(group)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1661, in create_from_dict
+                          group = self._portal.create_group_from_dict(dict, thumbnail)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 501, in create_group_from_dict
+                          resp = self.con.post('community/createGroup', postdata, files)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                          resp_json = json.loads(resp_data)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                          return _default_decoder.decode(s)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                          obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                          raise JSONDecodeError("Expecting value", s, err.value) from None
+                        json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+21-06-2018 10:31:15   Creating group: Away Team
+21-06-2018 10:31:23   Expecting value: line 1 column 1 (char 0)
+                      ERROR: Failed to create group Away Team
+                      Traceback:
+                        File "portaladmin.py", line 281, in createGroups
+                          newGroup = gisInfo.gis.groups.create_from_dict(group)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1661, in create_from_dict
+                          group = self._portal.create_group_from_dict(dict, thumbnail)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 501, in create_group_from_dict
+                          resp = self.con.post('community/createGroup', postdata, files)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                          resp_json = json.loads(resp_data)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                          return _default_decoder.decode(s)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                          obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                          raise JSONDecodeError("Expecting value", s, err.value) from None
+                        json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+21-06-2018 10:31:23   Creating group: Crew
+21-06-2018 10:31:28   Expecting value: line 1 column 1 (char 0)
+                      ERROR: Failed to create group Crew
+                      Traceback:
+                        File "portaladmin.py", line 281, in createGroups
+                          newGroup = gisInfo.gis.groups.create_from_dict(group)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\gis\__init__.py", line 1661, in create_from_dict
+                          group = self._portal.create_group_from_dict(dict, thumbnail)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\portalpy.py", line 501, in create_group_from_dict
+                          resp = self.con.post('community/createGroup', postdata, files)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\arcgis\_impl\connection.py", line 1104, in post
+                          resp_json = json.loads(resp_data)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\__init__.py", line 354, in loads
+                          return _default_decoder.decode(s)
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 339, in decode
+                          obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+                        File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\json\decoder.py", line 357, in raw_decode
+                          raise JSONDecodeError("Expecting value", s, err.value) from None
+                        json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+21-06-2018 10:31:28   Creating group: Engineering
+21-06-2018 10:31:57   Creating group: Medical
+21-06-2018 10:31:59     waiting for group "Medical" to be created
+21-06-2018 10:32:04   Creating group: Star Trek:TOS
+21-06-2018 10:32:05     waiting for group "Star Trek:TOS" to be created
+21-06-2018 10:32:10   Creating group: Star Trek:Enterprise
+21-06-2018 10:32:11   Creating group: Star Trek:Deep Space Nine
+21-06-2018 10:32:12     waiting for group "Star Trek:Deep Space Nine" to be created
+21-06-2018 10:32:17   Creating group: Star Trek:Voyager
+21-06-2018 10:32:18     waiting for group "Star Trek:Voyager" to be created
+21-06-2018 10:32:23   Creating group: Star Trek:Discovery
+21-06-2018 10:32:24     waiting for group "Star Trek:Discovery" to be created
+21-06-2018 10:32:30   Creating group: Star Trek:TNG
+21-06-2018 10:32:30     waiting for group "Star Trek:TNG" to be created
+21-06-2018 10:32:36 Creating users
+21-06-2018 10:32:36   Creating user kirk, role ST Captain
+21-06-2018 10:32:46     Assigning role: ST Captain
+21-06-2018 10:32:47     Adding to groups:
+21-06-2018 10:32:48       added to group "Star Trek:TOS"
+21-06-2018 10:32:48   Creating user picard, role ST Captain
+21-06-2018 10:32:57     Assigning role: ST Captain
+21-06-2018 10:32:58     Adding to groups:
+21-06-2018 10:32:59       added to group "Star Trek:TNG"
+21-06-2018 10:32:59   Creating user archer, role ST Captain
+21-06-2018 10:33:07     Assigning role: ST Captain
+21-06-2018 10:33:08     Adding to groups:
+21-06-2018 10:33:09       added to group "Star Trek:Discovery"
+21-06-2018 10:33:09   Creating user janeway, role ST Captain
+21-06-2018 10:33:18     Assigning role: ST Captain
+21-06-2018 10:33:18     Adding to groups:
+21-06-2018 10:33:19       added to group "Star Trek:Voyager"
+21-06-2018 10:33:19   Creating user sisko, role ST Captain
+21-06-2018 10:33:28     Assigning role: ST Captain
+21-06-2018 10:33:29     Adding to groups:
+21-06-2018 10:33:30       added to group "Star Trek:Deep Space Nine"
+21-06-2018 10:33:30 Configuration security options
+21-06-2018 10:33:30   Current default role: account_user
+21-06-2018 10:33:32 Configuring general properties
+21-06-2018 10:33:32 Configuring system properties
+21-06-2018 10:33:33   No system properties require changing
+21-06-2018 10:33:33 Script completed with errors

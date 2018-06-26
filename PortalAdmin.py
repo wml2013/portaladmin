@@ -4,10 +4,10 @@
 # To run: python portaladmin.py --config portalconfigsettings.py --url "https://skanska.azure.esriuk.com/arcgis" -u "siteadmin" -p "Jkkjjxx"
 #
 # Note: this is for Ming's own testing as it creates users from the Star Trek Universe. 
-# 
-# Version: 11.1
-#
-# Date: 20th June 2018
+# Unable to properly disable the living Atlas..
+#  
+# Version: 11.3
+# Date: 21st June 2018
 import os, sys
 import json
 import importlib.util
@@ -389,7 +389,7 @@ def createUsers(gisInfo):
 #def disableLivingAtlas(gisInfo):
 #    localLogger.write("Disabling Living Atlas")
 #    localLogger.incIndent()
-
+#
 #    try:
 #        with localLogger.DisableAPILogging():
 #            livingAtlas = gisInfo.gis.admin.living_atlas
@@ -423,7 +423,7 @@ def createUsers(gisInfo):
 #                    localLogger.write("WARNING: Failed to unshare \"{}\": {}".format(grp.title, result))
 #                results.append(result["status"] == "success")
 #        return all(results)
-
+#
 #    except Exception as ex:
 #        localLogger.write(FormatExceptions("ERROR: Unexpected exception thrown", ex))
 #        return False
@@ -583,6 +583,8 @@ def main(args):
     parser.add_argument('-url','--url', help='Portal url of the form: https://portalname.domain.com/webadaptor')
     parser.add_argument('-u','--user', help='Administrator username')
     parser.add_argument('-p','--password', help='Administrator password')
+    parser.add_argument('-us','--users', help='users.csv file')
+    parser.add_argument('-g','--groups', help='groups.csv file')
     parser.add_argument('-l', '--log', help='Path to log file', default='python_process.log')
     parser.add_argument("-ll", "--loggingLevel", help="Logging level", default="INFO",
                         choices = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"])

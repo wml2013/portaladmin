@@ -4,9 +4,10 @@ org,ST User.  ,FALSE,FALSE,FALSE,null,Star Trek User.    ,title,asc,"ESC User",I
 org,The Carousel.  ,TRUE,FALSE,FALSE,null,The Carousel.    ,title,asc,"carousel",Icons/Churn.png,The Carousel
 org,Away Team.  ,TRUE,FALSE,FALSE,null,The Away Team.    ,title,asc,"away team",Icons/startrek.png,Away Team
 org,Crew.  ,TRUE,FALSE,FALSE,null,The Crew.    ,title,asc,"crew",Icons/startrek.png,Crew
-org,Engineering.  ,TRUE,FALSE,FALSE,null,Ship Engineering.    ,title,asc,"engineering",Icons/startrek_engineering.png,Engineering
+org,Engineering.  ,TRUE,FALSE,FALSE,null,Engineering.    ,title,asc,"engineering",Icons/startrek_engineering.png,Engineering
+org,Medical.  ,TRUE,FALSE,FALSE,null,Medical.    ,title,asc,"medical",Icons/star_trek_medical.png,Medical
 public,Star Trek: TOS.  ,TRUE,FALSE,FALSE,null,Star Trek: The Original Series.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:TOS"
-public,Star Trek: Enterprise.  ,TRUE,FALSE,FALSE,null,Star Trek: Enterprise.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Enterprise"
+public,Star Trek: Enterprise.  ,TRUE,FALSE,FALSE,null,Star Trek: Enterprise.    ,title,asc,"tos",Icons/enterprise.png,"Star Trek:Enterprise"
 public,Star Trek: Deep Space Nine.  ,TRUE,FALSE,FALSE,null,Star Trek: Deep Space Nine.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Deep Space Nine"
 public,Star Trek: Voyager.  ,TRUE,FALSE,FALSE,null,Star Trek: Voyager.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Voyager"
 public,Star Trek: Discovery.  ,TRUE,FALSE,FALSE,null,Star Trek: Discovery.    ,title,asc,"tos",Icons/startrek.png,"Star Trek:Discovery"
