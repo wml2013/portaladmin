@@ -16,7 +16,7 @@ This is the main file that is run and contains the code to create users, create 
 This is the main configuration file with configureable settings, majority of the configuration settings normally carried out via Portal Administration is now controlled by this file
 
 **portaladmin_cleanup.py**
-This file removes all users (apart from siteadmin and admin -- configureable), customised roles, customised groups and users' content
+This file removes all users (apart from siteadmin and admin -- configureable), customised roles, customised groups and deleted users' content
 
 e.g. syntax:
 python.exe portaladmin_cleanup.py <https://skanska.azure.esriuk.com/arcgis> --user "siteadmin" --password "kkfkjd88jd"
@@ -41,11 +41,11 @@ A folder of icons used for groups, users and some content.
 
 ==Logs==
 
-A folder that contains the log files created by the localLogger.py module.
+A folder that contains the log files created by the localLogger.py module and can be deleted.
 
 ==Utils==
 
-A folder that contains the localLogger module and supporting files.
+A folder that contains the localLogger module and supporting files. Please do not edit unless you know what you are doing.
 
 ==User_content==
 
