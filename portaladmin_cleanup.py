@@ -43,7 +43,7 @@ try:
     try:
         for user in user_list:
             log_file.write('\nUser : ' + user.username + " # ")
-            if user.fullName in ['Administrator', 'Esri', 'Esri Navigation', 'siteadmin', 'admin']:
+            if user.fullName in ['Administrator', 'Esri', 'Esri Navigation', 'portaladmin', 'siteadmin', 'admin']:
                 log_file.write('skipped')
                 continue
 
@@ -64,7 +64,7 @@ try:
     log_file.write("--------------\n")
 
     for user in user_list:
-        if user.username == "admin" or user.username.startswith("esri_") or user.username == "siteadmin" or user.username.startswith("ming"):
+        if user.username == "admin" or user.username.startswith("esri_") or user.username == "siteadmin" or user.username == "portaladmin":
             continue
         else:
             log_file.write("\nDeleting " + user.username + "  ##  ")
