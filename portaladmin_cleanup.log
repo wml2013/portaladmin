@@ -1,0 +1,58 @@
+
+=====================================================================
+RUNNING CLEANUP
+Deleting groups
+---------------
+
+Deleting Away Team  ##  success
+Deleting Crew  ##  success
+Deleting Engineering  ##  success
+Deleting Gallery  ##  Error deleting : Unable to delete group. Delete protection is turned on.
+(Error Code: 400)
+Deleting Medical  ##  success
+Deleting ST Captain  ##  success
+Deleting ST User  ##  success
+Deleting Star Trek:Deep Space Nine  ##  success
+Deleting Star Trek:Discovery  ##  success
+Deleting Star Trek:Enterprise  ##  success
+Deleting Star Trek:TNG  ##  success
+Deleting Star Trek:TOS  ##  success
+Deleting Star Trek:Voyager  ##  success
+Deleting The Carousel  ##  success
+
+Deleting user content
+---------------------
+
+User : archer # empty
+User : esri_boundaries # skipped
+User : esri_demographics # skipped
+User : esri_livingatlas # skipped
+User : esri_nav # skipped
+User : janeway # empty
+User : kirk # empty
+User : minglee # empty
+User : picard # empty
+User : sisko # empty
+User : siteadmin # 
+Deleting : qfaults # content_del_ex
+
+Deleting users
+--------------
+
+Deleting archer  ##  success
+Deleting janeway  ##  success
+Deleting kirk  ##  success
+Deleting minglee  ##  success
+Deleting picard  ##  success
+Deleting sisko  ##  success
+ All clean
+
+Deleting roles
+--------------
+
+Deleting ST User  ##  success
+Deleting ST Viewer  ##  success
+Deleting ST Captain  ##  success
+Deleting ST Engineer  ##  success
+Deleting ST Publisher  ##  success
+ All clean
