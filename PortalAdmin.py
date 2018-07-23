@@ -308,7 +308,7 @@ def createUsers(gisInfo):
     results = []
 
     try:
-        with open("users_trek.csv", 'r') as users_csv:
+        with open("users_large_trek.csv", 'r') as users_csv:
             users = csv.DictReader(users_csv)
 
             for user in users:

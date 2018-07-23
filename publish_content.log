@@ -1,0 +1,81 @@
+
+=====================================================================
+PUBLISHING USER CONTENT
+Publishing user_content/KS.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TOS
+Publishing user_content/INV.csv # Error : File(user_content/INV.csv) not found.
+Publishing user_content/IL.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:Discovery
+Publishing user_content/UT.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:Voyager
+Publishing user_content/UT.csv # Error : Service name 'UT' already exists for '0123456789ABCDEF'
+Publishing user_content/KS.csv # Error : Service name 'KS' already exists for '0123456789ABCDEF'
+Publishing user_content/NV.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/IN.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/NC.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/AR.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/FL.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:Enterprise
+Publishing user_content/NH.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/ID.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:Enterprise
+Publishing user_content/AZ.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/LA.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/NY.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/MS.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/WI.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/WA.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/MI.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/VA.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/TX.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:Enterprise
+Publishing user_content/MA.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/AL.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/IL.csv # Error : Service name 'IL' already exists for '0123456789ABCDEF'
+Publishing user_content/NJ.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/DE.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/PA.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/CT.csv # webmaps ## success. Assigning to:   #  Error : Cannot find: Star Trek:TNG
+Publishing user_content/FM.csv # Error : Job failed.
+Publishing user_content/MT.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/OH.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/IA.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/KY.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/GA.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/WV.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/MD.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/VT.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/AK.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/ME.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/SC.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/WY.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/UT.csv # Error : Item 'UT.csv' already exists.
+(Error Code: 409)
+Publishing user_content/NE.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/PR.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/SD.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/CA.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/NM.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/TN.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/MO.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/ND.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/OR.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/MN.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
+Publishing user_content/CO.csv # webmaps ## success. Assigning to:   #  Error : Unable to reassign item. Target user does not have privileges to own items.
+(Error Code: 400)
