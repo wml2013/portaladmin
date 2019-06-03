@@ -1,0 +1,1 @@
+C:\Python27\ArcGISx6410.6\python.exe "C:\Program Files\ArcGIS\Server\tools\admin\serverscan.py"

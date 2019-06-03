@@ -1,0 +1,10 @@
+<html><body>
+<h1>ArcGIS Server Security Scan Report - 04/16/19</h1>
+<h2>sdmsdev1w001.ordsvy.gov.uk (10.6.1)</h2>
+<h3>Potential security items to review</h3>
+<table cellpadding="5">
+<tr><th align="left"><u>Id</u></th><th align="left"><u>Severity</u></th><th align="left"><u>Property Tested</u></th><th align="left"><u>Scan Results</u></th></tr>
+<tr valign="top"><td width="5%">SS08</td><td width="10%">Important</td><td width="15%">Cross-domain requests</td><td width="70%">Cross-domain requests are unrestricted. To reduce the possibility of an unknown application sending malicious commands to your web services, it is recommended to restrict the use of your services to applications hosted only in domains that you trust. <a href="http://sdmsdev1w001.ordsvy.gov.uk:6080/arcgis/help/en/0154/015400000523000000.htm" target="_blank">More information</a></td></tr>
+<tr valign="top"><td width="5%">SS11</td><td width="10%">Recommended</td><td width="15%">PSA account status</td><td width="70%">The primary site administrator account is enabled. It is recommended that you disable this account to ensure that there is not another way to administer ArcGIS Server other than the group or role that has been specified in your identity store. <a href="http://sdmsdev1w001.ordsvy.gov.uk:6080/arcgis/help/en/0154/0154000005w1000000.htm" target="_blank">More information</a></td></tr>
+<tr valign="top"><td width="5%">SS14</td><td width="10%">Recommended</td><td width="15%">Server SSL certificate</td><td width="70%">To help reduce web browser warnings or other unexpected behavior from clients communicating with ArcGIS Server, it is recommended to import and use a CA-signed SSL certificate bound to port 6443. <a href="http://sdmsdev1w001.ordsvy.gov.uk:6080/arcgis/help/en/0154/0154000005w2000000.htm" target="_blank">More information</a></td></tr>
+</table></body></html>

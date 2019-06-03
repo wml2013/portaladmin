@@ -1,0 +1,13 @@
+https://sdmsdev1w001.ordsvy.gov.uk:6443/arcgis/admin/security/config/update(
+securityConfig={
+  "Protocol": "HTTPS_only",
+  "authenticationTier": "ARCGIS_PORTAL",
+  "allowDirectAccess": "true",
+  "HSTSEnabled": "false",
+  "virtualDirsSecurityEnabled": "false",
+  "allowedAdminAccessIPs": "",
+}
+httpsProtocols=TLSv1.2
+
+cipherSuites=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384
+)
