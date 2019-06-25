@@ -95,13 +95,25 @@ roles = [
 #
 disableLivingAtlas = True
 #
+
+# Adding in the ability to generate a date+time string
+from time import gmtime, strftime
+theTimeDate =  strftime("%Y-%m-%d %H:%M:%S", gmtime())
+
 # General portal properties
 # Update name and description as required
 generalProperties = {
-    "name" : "Star Trek Test portal July 26 v1",
-    "description" : "Star Trek Test portal July 26 v1",
+    "name" : "Star Trek Test portal",
+    "description" : "Star Trek Test portal. Last updated:", + theTimeDate,
     "access" : "private",
-    "allSSL" : True
+    "allSSL" : True,
+    "units" : "metric",
+    "cultureFormat" : "gb",
+    "culture" : "en",
+    "language" : "english",
+    "showHomePageDescription" : True,
+    "canSearchPublic" : False,
+    "canSharePublic" : False
 }
 #
 # Security configuration
